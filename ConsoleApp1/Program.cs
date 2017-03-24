@@ -31,7 +31,14 @@ namespace ConsoleApp1
         }
     }
 
-    
+    public class RemovedNumbers
+    {
+        public static List<long[]> removNb(long n)
+        {
+            // your code
+            return null;
+        }
+    }
 
     public class BouncingBall
     {
