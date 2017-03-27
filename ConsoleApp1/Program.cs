@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace ConsoleApp1
 {
@@ -28,21 +29,53 @@ namespace ConsoleApp1
             Kata.DuplicateCount("Indivisibilities");
             Diamond.print(3);
             BouncingBall.bouncingBall(30.0, 0.66, 1.5);
+
+            for (int k = 1; k <= 1000; k++)
+            {
+                var result = RemovedNumbers.removNb(k);
+
+
+                if (result.Count > 0)
+                {
+                    foreach (var item in result)
+                    {
+                        Debug.WriteLine("k is {0}, item 0 is {1}, item 1 is {2}", k, item[0], item[1]);
+                    }
+                }
+            }
         }
     }
 
+    //too slow, but no idea how to improve the speed at the moment
     public class RemovedNumbers
     {
         public static List<long[]> removNb(long n)
         {
-            // your code
-            return null;
+            var result = new List<long[]>();
+
+            var sum = (1 + n) * n / 2;
+            for (int i = 1; i <= n; i++)
+            {
+                var k = i + 1;
+                while (k <= n)
+                {
+                    if (i * k == sum - i - k)
+                    {
+                        var item = new long[] { i, k };
+                        var itemReverse = new long[] { k, i };
+                        result.Add(item);
+                        result.Add(itemReverse);
+                        break;
+                    }
+                    k++;
+                }
+            }
+            return result;
         }
     }
 
     public class BouncingBall
     {
-
         public static int bouncingBall(double height, double bounce, double window)
         {
             if (bounce >= 1 || bounce <= 0 || height <= 0 || height <= window)
@@ -196,7 +229,7 @@ namespace ConsoleApp1
     public class Consecutives
     {
         public static List<int> SumConsecutives(List<int> sss)
-        { 
+        {
             var result = new List<int>();
 
             var count = 0;
@@ -304,7 +337,7 @@ namespace ConsoleApp1
             return sum;
         }
     }
- 
+
     public class Accumul
     {
         public static String Accum(string s)
