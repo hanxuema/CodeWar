@@ -46,6 +46,34 @@ namespace ConsoleApp1
         }
     }
 
+    public class ToSmallest
+    {
+        public static long[] Smallest(long number)
+        {
+            var result = new long[3];
+            var numberArray = number.ToString().ToArray().Select(n => int.Parse(n.ToString())).ToList();
+
+            var min = numberArray.Min();
+
+            for (int i = 0; i < numberArray.Count; i++)
+            {
+                if (numberArray[i] == min)
+                {
+
+                }
+                else
+                {
+                    break;
+                }
+
+            }
+
+            
+
+            return result;
+        }
+    }
+
     //too slow, but no idea how to improve the speed at the moment
     public class RemovedNumbers
     {
