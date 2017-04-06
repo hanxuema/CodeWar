@@ -12,23 +12,48 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
+            //var n = int.Parse( Console.ReadLine());
 
-            Console.WriteLine(7 / 2);
-            Kata.GetMiddle("testing");
-            Kata.rowSumOddNumbers(42);
-            var arr = new int[] { 1, 2, 3, 4, 3, 2, 1 };
-            Kata.FindEvenIndex(arr);
-            DigPow.digPow(999999, 1);
-            Accumul.Accum("ZpglnRxqenU");
-            Kata.SpinWords("This is another test");
-            Kata.palindromeChainLength(89);
-            List<int> i = new List<int> { -5, -5, 7, 7, 12, 0 };
-            Consecutives.SumConsecutives(i);
-            Kata.FirstNonRepeatingLetter("aa");
-            GapInPrimes.Gap(6, 100, 110);
-            Kata.DuplicateCount("Indivisibilities");
-            Diamond.print(3);
-            BouncingBall.bouncingBall(30.0, 0.66, 1.5);
+            //var arr = Console.ReadLine().Split(' ').Select(s =>int.Parse(s)).ToArray();
+
+            int i = 4;
+            double d = 4.0;
+            string s = "HackerRank";
+
+            // Declare second integer, double, and String variables.
+            int secondInt; double secondDouble; string secondString;
+            // Read and save an integer, double, and String to your variables.
+            secondInt = Convert.ToInt32(Console.ReadLine());
+            secondDouble = Convert.ToDouble(Console.ReadLine());
+            secondString = Console.ReadLine();
+            // Print the sum of both integer variables on a new line.
+            Console.WriteLine(i + secondInt);
+            Console.WriteLine((d + secondDouble).ToString("0.0"));
+            // Print the sum of the double variables on a new line.
+            // Concatenate and print the String variables on a new line
+            // The 's' variable above should be printed first.
+            Console.WriteLine(s + secondString);
+
+            var sol = new Solution();
+            var aaa = new int[] { 64630, 11735, 14216, 99233, 14470, 4978, 73429, 38120, 51135, 67060 };
+            sol.Mean(10, aaa);
+            sol.Median(10, aaa);
+            //Console.WriteLine(7 / 2);
+            //Kata.GetMiddle("testing");
+            //Kata.rowSumOddNumbers(42);
+            //var arr = new int[] { 1, 2, 3, 4, 3, 2, 1 };
+            //Kata.FindEvenIndex(arr);
+            //DigPow.digPow(999999, 1);
+            //Accumul.Accum("ZpglnRxqenU");
+            //Kata.SpinWords("This is another test");
+            //Kata.palindromeChainLength(89);
+            //List<int> i = new List<int> { -5, -5, 7, 7, 12, 0 };
+            //Consecutives.SumConsecutives(i);
+            //Kata.FirstNonRepeatingLetter("aa");
+            //GapInPrimes.Gap(6, 100, 110);
+            //Kata.DuplicateCount("Indivisibilities");
+            //Diamond.print(3);
+            //BouncingBall.bouncingBall(30.0, 0.66, 1.5);
 
             for (int k = 1; k <= 1000; k++)
             {
@@ -46,30 +71,90 @@ namespace ConsoleApp1
         }
     }
 
+    public class Solution
+    {
+        //mean median mode
+        public void Mean(int n, int[] arr)
+        {
+            Console.WriteLine(Math.Round(arr.Average(), 1));
+        }
+
+        public void Median(int n, int[] arr)
+        {
+            double result;
+            var newArray = arr.OrderBy(a => a).ToArray();
+            if (n % 2 == 0)
+            {
+                var first = newArray[(n / 2) - 1];
+                var second = newArray[(n / 2)];
+
+                result = Math.Round(Convert.ToDouble((first + second) / 2.0), 1);
+            }
+            else
+            {
+                result = Math.Round(Convert.ToDouble(newArray[(n + 1) / 2]), 1);
+            }
+            Console.WriteLine(result);
+        }
+
+        public void Mode(int n, int[] arr)
+        {
+            var groups = arr.GroupBy(a => a).OrderByDescending(g => g.Count()).ThenBy(g => g.ToArray()[0]).ToArray();
+
+            var result = groups[0].ToArray()[0];
+
+            Console.WriteLine(Math.Round(Convert.ToDouble(result), 1));
+        }
+    }
+
     public class ToSmallest
     {
+        /// <summary>
+        /// Give a number, turn an array of 3
+        /// </summary>
+        /// <param name="number"></param>
+        /// <returns>
+        ///1) the smallest number you got
+        ///2) the index i of the digit d you took, i as small as possible
+        ///3) the index j(as small as possible) where you insert this digit d to have the smallest  
+        /// </returns>
         public static long[] Smallest(long number)
         {
             var result = new long[3];
+            long smallestNumber = 0;
+            long indexI = 0;
+            long indexJ = 0;
+            //turn the number to number array
             var numberArray = number.ToString().ToArray().Select(n => int.Parse(n.ToString())).ToList();
-
+            //find the smallest number
             var min = numberArray.Min();
-
+            //loop through
             for (int i = 0; i < numberArray.Count; i++)
             {
                 if (numberArray[i] == min)
                 {
+                    //if the index is NOT zero, then move the number to 0 
+                    if (i >= 1) //261235
+                    {
+                        indexI = i;
+                        indexJ = 0;
+                        var numberAtIndexZero = numberArray[0];
+                        numberArray[0] = numberArray[i];
+                        numberArray[i] = numberAtIndexZero;
+                    }
+                    else //=0
+                    {
 
+                    }
                 }
                 else
                 {
                     break;
                 }
-
             }
-
-            
-
+            result[0] = smallestNumber;
+            result[1] = indexI;
+            result[2] = indexJ;
             return result;
         }
     }
