@@ -10,29 +10,69 @@ namespace ConsoleApp1
 {
     class Program
     {
+        static string[] convertToStringArray(string input)
+        {
+            return input.Split(' ').Select(i => i).ToArray();
+        }
+
+        static int[] convertToIntArray(string input)
+        {
+            return input.Split(' ').Select(i => Convert.ToInt32(i)).ToArray();
+        }
+
+        static double WeightedMean(int length, int[] weightArray, int[] respectiveWeightsArray)
+        {
+            double total = 0;
+            double divide = 0;
+            for (int i = 0; i < weightArray.Length; i++)
+            {
+                total = total + weightArray[i] * respectiveWeightsArray[i];
+                divide = divide + respectiveWeightsArray[i];
+            }
+            return total / divide;
+        }
+
         static void Main(string[] args)
         {
-            //var n = int.Parse( Console.ReadLine());
+            #region 30 days of Code Chanllenges
+            //day 1
+            //int i = 4;
+            //double d = 4.0;
+            //string s = "HackerRank";
 
-            //var arr = Console.ReadLine().Split(' ').Select(s =>int.Parse(s)).ToArray();
+            //// Declare second integer, double, and String variables.
+            //int secondInt; double secondDouble; string secondString;
+            //// Read and save an integer, double, and String to your variables.
+            //secondInt = Convert.ToInt32(Console.ReadLine());
+            //secondDouble = Convert.ToDouble(Console.ReadLine());
+            //secondString = Console.ReadLine();
+            //// Print the sum of both integer variables on a new line.
+            //Console.WriteLine(i + secondInt);
+            //Console.WriteLine((d + secondDouble).ToString("0.0"));
 
-            int i = 4;
-            double d = 4.0;
-            string s = "HackerRank";
+            //Console.WriteLine(s + secondString);
 
-            // Declare second integer, double, and String variables.
-            int secondInt; double secondDouble; string secondString;
-            // Read and save an integer, double, and String to your variables.
-            secondInt = Convert.ToInt32(Console.ReadLine());
-            secondDouble = Convert.ToDouble(Console.ReadLine());
-            secondString = Console.ReadLine();
-            // Print the sum of both integer variables on a new line.
-            Console.WriteLine(i + secondInt);
-            Console.WriteLine((d + secondDouble).ToString("0.0"));
-            // Print the sum of the double variables on a new line.
-            // Concatenate and print the String variables on a new line
-            // The 's' variable above should be printed first.
-            Console.WriteLine(s + secondString);
+
+            ////day 2
+            //double mealPrice = Convert.ToDouble(Console.ReadLine());
+            //double tipPercent = Convert.ToInt32(Console.ReadLine());
+            //double taxPercent = Convert.ToInt32(Console.ReadLine());
+
+            //var totalCost = mealPrice + mealPrice * tipPercent / 100 + mealPrice * taxPercent / 100;
+            //Console.WriteLine(string.Format("The total meal cost is {0} dollars.", Math.Round(totalCost, 0)));
+            #endregion
+
+
+
+            #region 10 Days of Statistics Challenges 
+            //Day 0: Weighted Mean
+            var length = Convert.ToInt32(Console.ReadLine());
+            var weightArray = convertToIntArray(Console.ReadLine());
+            var respectiveWeightsArray = convertToIntArray(Console.ReadLine());
+            Console.WriteLine(WeightedMean(length, weightArray, respectiveWeightsArray).ToString("0.0"));
+
+
+            #endregion
 
             var sol = new Solution();
             var aaa = new int[] { 64630, 11735, 14216, 99233, 14470, 4978, 73429, 38120, 51135, 67060 };
