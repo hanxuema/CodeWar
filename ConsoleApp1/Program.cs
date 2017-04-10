@@ -32,9 +32,56 @@ namespace ConsoleApp1
             return total / divide;
         }
 
+        static string IntroToConditionalStatements(int number)
+        {
+            var result = "";
+            if (number % 2 == 1)
+            {
+                result = "Weird";
+            }
+            else
+            {
+                if (number >= 2 && number <= 5)
+                {
+                    result = "Not Weird";
+                }
+                else if (number >= 6 && number <= 20)
+                {
+                    result = "Weird";
+                }
+                else
+                {
+                    result = "Not Weird";
+                }
+            }
+            return result;
+        }
+
+        static void LetsReview(int numberOfTestCase, string[] testCases)
+        {
+            var sb = new StringBuilder();
+            for (int i = 0; i < numberOfTestCase; i++)
+            {
+                var testCaseArray = testCases[i].ToArray();
+                for (int k = 0; k < testCaseArray.Length; k = k + 2)
+                {
+                    sb.Append(testCaseArray[k]);
+                }
+                sb.Append("  ");
+                for (int k = 1; k < testCaseArray.Length; k = k + 2)
+                {
+                    sb.Append(testCaseArray[k]);
+                }
+                sb.AppendLine();
+            }
+
+            Console.Write(sb.ToString());
+        }
+
         static void Main(string[] args)
         {
             #region 30 days of Code Chanllenges
+
             //day 1
             //int i = 4;
             //double d = 4.0;
@@ -60,6 +107,29 @@ namespace ConsoleApp1
 
             //var totalCost = mealPrice + mealPrice * tipPercent / 100 + mealPrice * taxPercent / 100;
             //Console.WriteLine(string.Format("The total meal cost is {0} dollars.", Math.Round(totalCost, 0)));
+
+            //Day 3: Intro to Conditional Statements
+            //Console.WriteLine(IntroToConditionalStatements(Convert.ToInt32(Console.ReadLine())));
+
+
+            //Day 6: Let's Review 
+
+            var numberOfTestCase = Convert.ToInt32(Console.ReadLine());
+            var testCases = new List<String>();
+            string input;
+            var idx = 1;
+
+            input = Console.ReadLine();
+
+            while (input.ToUpper() != "EXIT" && idx <= numberOfTestCase)
+            {
+                testCases.Add(input);
+                if (idx == numberOfTestCase) { break; }
+                idx++;
+                input = Console.ReadLine();
+            }
+
+            LetsReview(numberOfTestCase, testCases.ToArray());
             #endregion
 
 
