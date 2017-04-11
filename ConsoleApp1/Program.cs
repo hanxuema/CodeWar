@@ -114,22 +114,33 @@ namespace ConsoleApp1
 
             //Day 6: Let's Review 
 
-            var numberOfTestCase = Convert.ToInt32(Console.ReadLine());
-            var testCases = new List<String>();
-            string input;
-            var idx = 1;
+            //var numberOfTestCase = Convert.ToInt32(Console.ReadLine());
+            //var testCases = new List<String>();
+            //string input;
+            //var idx = 1;
 
-            input = Console.ReadLine();
+            //input = Console.ReadLine();
 
-            while (input.ToUpper() != "EXIT" && idx <= numberOfTestCase)
+            //while (input.ToUpper() != "EXIT" && idx <= numberOfTestCase)
+            //{
+            //    testCases.Add(input);
+            //    if (idx == numberOfTestCase) { break; }
+            //    idx++;
+            //    input = Console.ReadLine();
+            //}
+
+            //LetsReview(numberOfTestCase, testCases.ToArray());
+
+            //Day 7: Arrays
+
+            int n = Convert.ToInt32(Console.ReadLine());
+            string[] arr_temp = Console.ReadLine().Split(' ');
+            int[] arr = Array.ConvertAll(arr_temp, Int32.Parse);
+            
+            for (int i = arr.Length -1; i >=0 ; i--)
             {
-                testCases.Add(input);
-                if (idx == numberOfTestCase) { break; }
-                idx++;
-                input = Console.ReadLine();
+                Console.Write(arr[i] + " ");
             }
-
-            LetsReview(numberOfTestCase, testCases.ToArray());
             #endregion
 
 
