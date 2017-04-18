@@ -18,6 +18,7 @@ namespace ConsoleApp1
         static int[] convertToIntArray(string input)
         {
             return input.Split(' ').Select(i => Convert.ToInt32(i)).ToArray();
+            //test github
         }
 
         static double WeightedMean(int length, int[] weightArray, int[] respectiveWeightsArray)
